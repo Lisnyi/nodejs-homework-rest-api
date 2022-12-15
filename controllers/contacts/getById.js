@@ -1,16 +1,11 @@
-const Contact = require('../../models/contact')
+const {getContactById} = require('../../services/contactsServices')
 
-const {httpError} = require('../../helpers')
-
-const getById = async (req, res) => {
+const getByIdController = async (req, res) => {
     const {contactId} = req.params
-    const data = await Contact.findById(contactId)
-
-    if (!data) {
-        throw httpError(404, 'Not found')
-    }
+    
+    const data = await getContactById(contactId)
 
     res.json(data)
 }
 
-module.exports = getById
+module.exports = getByIdController
