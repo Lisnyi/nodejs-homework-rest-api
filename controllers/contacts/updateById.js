@@ -1,16 +1,12 @@
-const { updateContact } = require('../../models/contacts')
-const {httpError} = require('../../helpers')
+const {updateContactById} = require('../../services/contactsServices')
 
-const updateById = async (req, res, next) => {
+const updateByIdController = async (req, res) => {
     const { contactId } = req.params
     const { body } = req
-    const data = await updateContact(contactId, body)
-
-    if (!data) {
-        throw httpError(404, 'Not found')
-    }
+    
+    const data = await updateContactById(contactId, body)
 
     res.json(data)
 }
 
-module.exports = updateById
+module.exports = updateByIdController
