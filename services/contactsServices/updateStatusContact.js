@@ -1,10 +1,10 @@
-const Contact = require('../../models/contact')
+const {Contact} = require('../../models')
 
 const {httpError} = require('../../helpers')
 
-const updateStatusContact = async (id, body) => {
+const updateStatusContact = async (id, owner, body) => {
 
-    const data = await Contact.findByIdAndUpdate(id, body, {new: true})
+    const data = await Contact.findOneAndUpdate({_id:id, owner}, body, {new:true})
 
     if (!data) {
         throw httpError(404, 'Not found')
