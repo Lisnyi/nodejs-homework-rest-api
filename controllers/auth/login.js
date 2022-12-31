@@ -1,4 +1,4 @@
-const {findUserByEmail, comparePasswords, createToken} = require('../../services/authServices')
+const {findUserByEmail, comparePasswords, createToken, updateUserToken} = require('../../services/authServices')
 
 const login = async (req, res) => {
     const {email, password} = req.body
@@ -12,6 +12,8 @@ const login = async (req, res) => {
     }
 
     const token = await createToken(payload)
+
+    await updateUserToken(user._id, token)
 
     res.json({
         token,

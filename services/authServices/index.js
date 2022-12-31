@@ -4,6 +4,7 @@ const hashPassword = require('./hashPassword')
 const findUserByEmail = require('./findUserByEmail')
 const comparePasswords = require('./comparePasswords')
 const createToken = require('./createToken')
+const updateUserToken = require('./updateUserToken')
 
 module.exports = {
     addUser,
@@ -12,4 +13,5 @@ module.exports = {
     findUserByEmail,
     comparePasswords,
     createToken,
+    updateUserToken
 }
