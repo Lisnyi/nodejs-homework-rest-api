@@ -1,20 +1,13 @@
-const bcrypt = require('bcrypt')
-
-const {User} = require('../../models')
-
-const {httpError} = require('../../helpers')
+const {isUniqUserEmail, hashPassword, addUser} = require('../../services/authServices')
 
 const register = async (req, res) => {
     const {email, password} = req.body
 
-    const user = await User.findOne({email})
-    if(user) {
-        throw httpError(409, 'Email in use')
-    }
+    await isUniqUserEmail(email)
 
-    const hashPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await hashPassword(password)
 
-    const newUser = await User.create({...req.body, password: hashPassword})
+    const newUser = await addUser(req.body, hashedPassword)
 
     res.status(201).json({
         user: {
