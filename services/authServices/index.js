@@ -5,6 +5,7 @@ const findUserByEmail = require('./findUserByEmail')
 const comparePasswords = require('./comparePasswords')
 const createToken = require('./createToken')
 const updateUserToken = require('./updateUserToken')
+const updateUserSubscription = require('./updateUserSubscription')
 
 module.exports = {
     addUser,
@@ -13,5 +14,6 @@ module.exports = {
     findUserByEmail,
     comparePasswords,
     createToken,
-    updateUserToken
+    updateUserToken,
+    updateUserSubscription,
 }

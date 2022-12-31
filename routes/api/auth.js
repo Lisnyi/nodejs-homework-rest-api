@@ -6,7 +6,7 @@ const {controllersWrapper} = require('../../helpers')
 
 const {validateBody, authenticate} = require('../../middlewares')
 
-const {loginSchema, registrationSchema} = require('../../schemas')
+const {loginSchema, registrationSchema, subscriptionSchema} = require('../../schemas')
 
 const router = express.Router()
 
@@ -17,5 +17,7 @@ router.post('/users/login', validateBody(loginSchema), controllersWrapper(authCt
 router.get('/users/current', authenticate, controllersWrapper(authCtrl.getCurrent))
 
 router.post('/users/logout', authenticate, controllersWrapper(authCtrl.logout))
+
+router.patch('/users', authenticate, validateBody(subscriptionSchema), controllersWrapper(authCtrl.updateSubscription))
 
 module.exports = router
