@@ -18,6 +18,6 @@ router.get('/users/current', authenticate, controllersWrapper(authCtrl.getCurren
 
 router.post('/users/logout', authenticate, controllersWrapper(authCtrl.logout))
 
-router.patch('/users', authenticate, validateBody(subscriptionSchema), controllersWrapper(authCtrl.updateSubscription))
+router.patch('/users/subscription', authenticate, validateBody(subscriptionSchema), controllersWrapper(authCtrl.updateSubscription))
 
 module.exports = router
