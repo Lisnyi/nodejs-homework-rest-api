@@ -4,7 +4,7 @@ const authCtrl = require('../../controllers/auth')
 
 const {controllersWrapper} = require('../../helpers')
 
-const {validateBody, authenticate} = require('../../middlewares')
+const {validateBody, authenticate, upload} = require('../../middlewares')
 
 const {loginSchema, registrationSchema, subscriptionSchema} = require('../../schemas')
 
@@ -19,5 +19,7 @@ router.get('/users/current', authenticate, controllersWrapper(authCtrl.getCurren
 router.post('/users/logout', authenticate, controllersWrapper(authCtrl.logout))
 
 router.patch('/users/subscription', authenticate, validateBody(subscriptionSchema), controllersWrapper(authCtrl.updateSubscription))
+
+router.patch('/users/avatars', authenticate, upload.single('avatar'), controllersWrapper(authCtrl.updateAvatar))
 
 module.exports = router

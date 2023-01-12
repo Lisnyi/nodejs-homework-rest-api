@@ -1,4 +1,4 @@
-const {isUniqUserEmail, hashPassword, addUser} = require('../../services/authServices')
+const {isUniqUserEmail, hashPassword, addUser, createAvatar} = require('../../services/authServices')
 
 const register = async (req, res) => {
     const {email, password} = req.body
@@ -7,7 +7,9 @@ const register = async (req, res) => {
 
     const hashedPassword = await hashPassword(password)
 
-    const newUser = await addUser(req.body, hashedPassword)
+    const avatarURL = createAvatar(email)
+
+    const newUser = await addUser(req.body, hashedPassword, avatarURL)
 
     res.status(201).json({
         user: {
