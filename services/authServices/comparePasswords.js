@@ -9,8 +9,6 @@ const comparePasswords = async (loginPassword, userPassword) => {
     if(!passwordCompare) {
         throw httpError(401, 'Email or password is wrong')
     }
-
-    return
 }
 
 module.exports = comparePasswords

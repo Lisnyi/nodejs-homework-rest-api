@@ -9,8 +9,6 @@ const updateUserToken = async (id, token='') => {
     if (!user) {
         throw httpError(404, 'Not found')
     }
-
-    return
 }
 
 module.exports = updateUserToken

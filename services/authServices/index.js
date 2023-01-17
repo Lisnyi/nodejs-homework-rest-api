@@ -6,6 +6,9 @@ const comparePasswords = require('./comparePasswords')
 const createToken = require('./createToken')
 const updateUserToken = require('./updateUserToken')
 const updateUserSubscription = require('./updateUserSubscription')
+const createAvatar = require('./createAvatar')
+const updateUserAvatar = require('./updateUserAvatar')
+const imageManipulation = require('./imageManipulation')
 
 module.exports = {
     addUser,
@@ -16,4 +19,7 @@ module.exports = {
     createToken,
     updateUserToken,
     updateUserSubscription,
+    createAvatar,
+    updateUserAvatar,
+    imageManipulation,
 }

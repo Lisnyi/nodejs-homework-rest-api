@@ -9,8 +9,6 @@ const isUnicUserEmail = async (email) => {
     if(user) {
         throw httpError(409, 'Email in use')
     }
-
-    return
 }
 
 module.exports = isUnicUserEmail
