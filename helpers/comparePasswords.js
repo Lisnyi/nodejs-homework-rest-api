@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 
-const {httpError} = require('../../helpers')
+const {httpError} = require('./httpError')
 
 const comparePasswords = async (loginPassword, userPassword) => {
 

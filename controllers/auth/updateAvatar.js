@@ -1,7 +1,8 @@
 const fs = require('fs/promises')
 const path = require('path')
 
-const {updateUserAvatar, imageManipulation} = require('../../services/authServices')
+const {updateUserAvatar} = require('../../services/authServices')
+const {imageManipulation} = require('../../helpers')
 
 const avatarsDir = path.join(__dirname, '../../', 'public', 'avatars')
 
