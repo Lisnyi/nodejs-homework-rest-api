@@ -1,9 +1,14 @@
-const {findUserByEmail, comparePasswords, createToken, updateUserToken} = require('../../services/authServices')
+const {findUserByEmail, updateUserToken} = require('../../services/authServices')
+const {httpError, createToken, comparePasswords} = require('../../helpers')
 
 const login = async (req, res) => {
     const {email, password} = req.body
 
     const user = await findUserByEmail(email)
+
+    if (!user.verify) {
+      throw httpError(401, "Email not verify")
+    }
 
     await comparePasswords(password, user.password)
 

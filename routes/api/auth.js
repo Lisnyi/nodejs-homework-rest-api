@@ -6,11 +6,15 @@ const {controllersWrapper} = require('../../helpers')
 
 const {validateBody, authenticate, upload} = require('../../middlewares')
 
-const {loginSchema, registrationSchema, subscriptionSchema} = require('../../schemas')
+const {loginSchema, registrationSchema, subscriptionSchema, verifySchema} = require('../../schemas')
 
 const router = express.Router()
 
 router.post('/users/register', validateBody(registrationSchema), controllersWrapper(authCtrl.register))
+
+router.get('/users/verify/:verificationToken', controllersWrapper(authCtrl.verify))
+
+router.post('/users/verify', validateBody(verifySchema), controllersWrapper(authCtrl.resendVerifyEmail))
 
 router.post('/users/login', validateBody(loginSchema), controllersWrapper(authCtrl.login))
 
